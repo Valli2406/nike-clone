@@ -1,0 +1,25 @@
+.align{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgb(240, 236, 236);
+    padding:.5rem 1rem;
+    width:99%;
+}
+.align .icons{
+    font-size: 2rem;
+    margin-right: 1rem;
+}
+.align a{
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+    cursor: pointer;
+}
+.align .links{
+    margin-right: 15px;
+}
+@media (max-width: 1023px) {
+    .align{
+        display:none;
+    }
+}

@@ -1,0 +1,59 @@
+.logoutbody{
+    background-image: url(https://images.pexels.com/photos/345415/pexels-photo-345415.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1);
+    background-position: center;
+    height: 97vh;
+    width: 99vw;
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+}
+.alignment {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+   
+}
+.alignment p {
+ font-size: 2rem;
+}
+.logoutcontent{
+    
+    margin-top: 450px;
+   font-size: 2rem;
+   align-items: center;
+   justify-content: center;
+   flex-direction: column;
+   color:black;
+}
+.logoutcontent span{
+    color: White;
+    font-weight: 700;
+    margin-left: .5rem;
+    text-transform: capitalize;
+}
+.logoutcontent button{
+    background-color: black;
+    padding:  8px 20px;
+    color: white;
+    font-weight: 500;
+    font-size: 1rem;
+    border-radius: 30px;
+    border: black 2px solid;
+    margin-left: 80px;
+
+}
+.logoutcontent button :hover{
+    background-color: white;
+    color: black;
+}
+
+
+@media (max-width: 1024px) {
+   .logoutcontent{
+    margin-top: 300px;
+    font-size: 1.5rem;
+   }
+   .logoutcontent button{
+    margin-left: 70px;
+   }
+}

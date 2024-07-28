@@ -1,0 +1,10 @@
+.Sidebar-title{
+    color: black;
+    font-size: 25px;
+    padding: 0 5px;
+}
+.sidebar-label-menu{
+    display: grid;
+    gap: 10px;
+    font-size: 20px;
+}

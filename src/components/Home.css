@@ -1,0 +1,54 @@
+.grid-wrap{
+    display: grid;
+    grid-template-columns: repeat(3,20%);
+    gap: 5%;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+.home-page-body, .home-page-html {
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.main-container {
+    background-color: black;
+    min-height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+  }
+.Homebtn{
+    position: relative;
+    bottom: 0;
+    right: 0;
+    color: black;
+    background-color: white;
+    padding: 10px 30px;
+    border: 2px solid white;
+    border-radius: 20px;
+    margin: 50px 90%;
+    width: 8rem;
+    cursor: pointer;
+    font-weight: 600;
+}
+@media (max-width:1024px) {
+    .Homebtn{
+        margin: 50px 80%;
+    }
+}
+@media (max-width:768px) {
+    .Homebtn{
+        margin: 50px 70%;
+    }
+}
+@media (max-width:430px) {
+    .Homebtn{
+        margin: 50px 65%;
+        width:7rem;
+        font-size: 10px;
+        font-weight: 500;
+    }
+}

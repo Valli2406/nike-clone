@@ -1,0 +1,25 @@
+.favflex .image{
+    background-color: rgba(128, 128, 128, 0.3);
+    width:200px;
+    height: 200px;
+}
+.favflex{
+    display: flex;
+    align-items: center;
+    gap:15px;
+    
+    
+}
+.favflex .title{
+    font-size: 1.5rem;
+}
+.quantity{
+    margin: 10px;
+}
+
+@media (max-width:350px) {
+    .favflex.image{
+        width: 400px;
+        height: 400px;
+    }
+}

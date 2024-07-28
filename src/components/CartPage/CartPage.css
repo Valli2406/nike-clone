@@ -1,0 +1,54 @@
+.page{
+    font-family: sans-serif;
+}
+h2{
+    color:red;
+}
+.mt{
+    margin-top: 10px;
+}
+.cartpagebody{
+    margin: 0 90px 0;
+}
+.cartpagebody .freeshipping{
+    border: 1px black solid;
+    border-radius: 10px;
+   width: 500px;
+   margin: 50px;
+   padding: 5px 30px 5px;
+}
+.freeshipping p {
+    color: grey;
+}
+.freeshipping p button{
+    color:grey;
+    font-family: sans-serif;
+    text-decoration: underline;
+    font-size: 16px;
+}
+.cartbutton{
+    border: 2px black solid;
+    border-radius: 20px;
+    padding: 10px 90px;
+    background-color: black;
+    color: white;
+    font-weight: 500;
+    font-size: 1.3rem;
+    transition: .5s ease;
+}
+.cartbutton:hover{
+    background-color: white;
+    color:black;
+    
+}
+
+@media (max-width:426px) {
+    .cartpagebody .freeshipping{
+        width: 300px;
+        margin-left: 0;       
+        padding-left: 10px;
+    }
+    .cartpagebody{
+        margin: 0;
+    }
+}

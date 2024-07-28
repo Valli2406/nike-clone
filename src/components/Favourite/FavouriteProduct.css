@@ -1,0 +1,19 @@
+.favimage{
+    background-color: rgba(128, 128, 128, 0.3);
+    height:400px;
+}
+.favourite{
+    line-height: 2px;
+}
+.alignment{
+    display: flex;
+    gap:10px;
+    flex-wrap: wrap;
+}
+
+.fav{
+    display: flex;
+    align-items: center;
+    gap:100px;
+    flex-wrap: wrap;
+}

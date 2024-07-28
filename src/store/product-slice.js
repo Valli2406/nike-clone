@@ -1,0 +1,640 @@
+import { createSlice } from '@reduxjs/toolkit';
+import axios from 'axios';
+const SET_PRODUCTS = 'SET_PRODUCTS';
+
+const productSlice = createSlice({
+    name: 'products',
+    initialState: {
+        products: [],
+    },
+    reducers: {
+        setProducts(state, action) {
+            state.products = action.payload;
+        },
+    },
+});
+
+export const { setProducts } = productSlice.actions;
+
+export const fetchProducts = () => async (dispatch) => {
+    // Commented out actual API call
+    // const response = await axios.get('http://localhost:5000/products');
+    // dispatch(setProducts(response.data));
+
+    // Using mock data
+    const products = [
+        {
+                  "company": "NIKE",
+                  "country": "USA",
+                  "id": 1,
+                  "productName": "Nike Dunk Low",
+                  "articleNo": "FZ4349-100",
+                  "division": "Women",
+                  "category": "Shoes",
+                  "subCategory": "Lifestyle",
+                  "listPrice": 130,
+                  "salePrice": null,
+                  "currency": "USD",
+                  "description": "Created for the hardwood but taken to the streets, this '80s basketball icon returns with classic details and throwback hoops flair. Synthetic leather overlays help the Nike Dunk channel vintage style while its padded, low-cut collar lets you take your game anywhere—in comfort.",
+                  "url": "https://nike.com/us/t/dunk-low-womens-shoes-KxSmbV/FZ4349-100",
+                  "imageUrl": "https://static.nike.com/a/images/t_default/ac89cfe2-a425-41b4-b51a-facde9df1215/dunk-low-womens-shoes-KxSmbV.png"
+                },{
+                  "company": "NIKE",
+                  "country": "USA",
+                  "id": 2,
+                  "productName": "Nike Killshot 2 Leather",
+                  "articleNo": "432997-111",
+                  "division": "Men",
+                  "category": "Shoes",
+                  "subCategory": "Lifestyle",
+                  "listPrice": 90,
+                  "salePrice": null,
+                  "currency": "USD",
+                  "description": "Inspired by the original low-profile tennis shoes, the Nike Killshot 2 updates the upper with various textured leathers to create a fresh look. From soft suedes to smooth leathers with the perfect sheen, it's courtside attitude with a modern touch. To prove you're on top, the rubber gum sole adds the cherry on bottom.",
+                  "url": "https://nike.com/us/t/killshot-2-leather-mens-shoes-72M7D1/432997-111",
+                  "imageUrl": "https://static.nike.com/a/images/t_default/af5dcd77-81d6-48b7-8223-4805cf98100b/killshot-2-leather-mens-shoes-72M7D1.png"
+                },{
+                  "company": "NIKE",
+                  "country": "USA",
+                  "id": 3,
+                  "productName": "Nike Air Max SC",
+                  "articleNo": "CW4554-119",
+                  "division": "Women",
+                  "category": "Shoes",
+                  "subCategory": "Lifestyle",
+                  "listPrice": 90,
+                  "salePrice": null,
+                  "currency": "USD",
+                  "description": "With its easy going lines, heritage track look and of course, visible Air cushioning, the Nike Air Max SC is the perfect finish to any outfit. The rich mixture of materials adds depth while making it a durable and lightweight shoe for everyday wear.",
+                  "url": "https://nike.com/us/t/air-max-sc-womens-shoes-CwMCK7/CW4554-119",
+                  "imageUrl": "https://static.nike.com/a/images/t_default/3345faeb-5949-49af-89b2-cbff4adcb4b8/air-max-sc-womens-shoes-CwMCK7.png"
+                },{
+                  "company": "NIKE",
+                  "country": "USA",
+                  "productName": "Nike Calm",
+                  "articleNo": "FD4116-201",
+                  "division": "Men",
+                  "category": "Shoes",
+                  "subCategory": "Lifestyle",
+                  "listPrice": 50,
+                  "salePrice": null,
+                  "currency": "USD",
+                  "description": "Enjoy a calm, comfortable experience—no matter where your day off takes you. Made with soft yet responsive foam, these lightweight slides are easy to style and easy to pack. While the water-friendly design makes them ideal for the beach or pool, the minimalist look is elevated enough to wear around in the city. Time to slide in and check out.",
+                  "url": "https://nike.com/us/t/calm-mens-slides-4hQGBf/FD4116-201",
+                  "imageUrl": "https://static.nike.com/a/images/t_default/18da855d-351f-4fc5-82bd-74fc40bd3f40/calm-mens-slides-4hQGBf.png"
+                },{
+                  "company": "NIKE",
+                  "country": "USA",
+                  "id": 4,
+                  "productName": "Nike Mercurial Superfly 9 Pro",
+                  "articleNo": "DJ5598-040",
+                  "division": "Unisex",
+                  "category": "Shoes",
+                  "subCategory": "Soccer",
+                  "listPrice": 170,
+                  "salePrice": 144.97,
+                  "currency": "USD",
+                  "description": "Instantly tilt the field in the bold design of the Superfly 9 Pro FG. It's loaded with a Zoom Air unit, so you can dominate in the waning minutes of a match—when it matters most. Fast is in the Air.",
+                  "url": "https://nike.com/us/t/mercurial-superfly-9-pro-firm-ground-high-top-soccer-cleats-lpGlgb/DJ5598-040",
+                  "imageUrl": "https://static.nike.com/a/images/t_default/7d909b37-b82b-47ca-b1db-a149cf3a9529/mercurial-superfly-9-pro-firm-ground-high-top-soccer-cleats-lpGlgb.png"
+                },
+                {
+                  "company": "NIKE",
+                  "country": "USA",
+                  "productName": "Nike Calm",
+                  "articleNo": "FD4116-400",
+                  "division": "Men",
+                  "category": "Shoes",
+                  "subCategory": "Swimming",
+                  "listPrice": 50,
+                  "salePrice": null,
+                  "currency": "USD",
+                  "description": "Enjoy a calm, comfortable experience—no matter where your day off takes you. Made with soft yet responsive foam, these lightweight slides are easy to style and easy to pack. While the water-friendly design makes them ideal for the beach or pool, the minimalist look is elevated enough to wear around in the city. Time to slide in and check out.",
+                  "url": "https://nike.com/us/t/calm-mens-slides-4hQGBf/FD4116-400",
+                  "imageUrl": "https://static.nike.com/a/images/t_default/62346412-6ce0-44c7-af46-1c404353d545/calm-mens-slides-4hQGBf.png"
+                },{
+              
+                  "company": "NIKE",
+                  "country": "USA",
+                  "id": 5,
+                  "productName": "Nike Mercurial Superfly 9 Pro",
+                  "articleNo": "DJ5598-700",
+                  "division": "Unisex",
+                  "category": "Shoes",
+                  "subCategory": "Soccer",
+                  "listPrice": 170,
+                  "salePrice": 149.97,
+                  "currency": "USD",
+                  "description": "Instantly tilt the field in the bold design of the Superfly 9 Pro FG. It's loaded with a Zoom Air unit, so you can dominate in the waning minutes of a match—when it matters most. Fast is in the Air.",
+                  "url": "https://nike.com/us/t/mercurial-superfly-9-pro-firm-ground-high-top-soccer-cleats-lpGlgb/DJ5598-700",
+                  "imageUrl": "https://static.nike.com/a/images/t_default/31df0425-4bf1-41c8-ba60-b52a9d72b3e4/mercurial-superfly-9-pro-firm-ground-high-top-soccer-cleats-lpGlgb.png"
+                },{
+                  "company": "NIKE",
+                  "country": "USA",
+                  "id": 6,
+                  "productName": "Tatum 2 \"Sidewalk Chalk\"",
+                  "articleNo": "FJ6457-300",
+                  "division": "Unisex",
+                  "category": "Shoes",
+                  "subCategory": "Basketball",
+                  "listPrice": 125,
+                  "salePrice": null,
+                  "currency": "USD",
+                  "description": "It's not over until you hear that buzzer. Fly through your game with energy to spare in the Tatum 2. It helps you stay light on your feet by limiting the use of heavy rubber. A full-length Nike Air Strobel unit supports your quick shifts, and a sturdy frame pairs with supportive foam that molds to your feet for a contained feel.",
+                  "url": "https://nike.com/us/t/tatum-2-vortex-basketball-shoes-8XGVH8/FJ6457-300",
+                  "imageUrl": "https://static.nike.com/a/images/t_default/u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/cf805f5a-eab7-46ac-acdc-91d3912744c1/tatum-2-vortex-basketball-shoes-8XGVH8.png"
+                },{
+                  "company": "NIKE",
+                  "country": "USA",
+                  "id": 7,
+                  "productName": "Nike Free RN 2018",
+                  "articleNo": "942837-100",
+                  "division": "Women",
+                  "category": "Shoes",
+                  "subCategory": "Running",
+                  "listPrice": 100,
+                  "salePrice": 80.97,
+                  "currency": "USD",
+                  "description": "The Nike Free RN 2018 delivers an even more adaptive fit than before. Stretch material in the upper moves with your foot, while the tri-star outsole pattern adjusts to your every step for a ride that delivers support and flexibility where you need it.",
+                  "url": "https://nike.com/us/t/free-rn-2018-womens-running-shoes-zE8Je3/942837-100",
+                  "imageUrl": "https://static.nike.com/a/images/t_default/lpedh5gu9bxuvsohuxma/free-rn-2018-womens-running-shoes-zE8Je3.png"
+                },{
+                  "company": "NIKE",
+                  "country": "USA",
+                  "id": 8,
+                  "productName": "Nike Alphafly 3",
+                  "articleNo": "FD8311-700",
+                  "division": "Men",
+                  "category": "Shoes",
+                  "subCategory": "Running",
+                  "listPrice": 285,
+                  "salePrice": null,
+                  "currency": "USD",
+                  "description": "Fine-tuned for marathon speed, the Alphafly 3 helps push you beyond what you thought possible. Three innovative technologies power your run: A double dose of Air Zoom units helps launch you into your next step; a full-length carbon fiber plate helps propel you forward with ease; and a heel-to-toe ZoomX foam midsole helps keep you fresh from start to 26.2. Time to leave your old personal records in the dust.",
+                  "url": "https://nike.com/us/t/alphafly-3-mens-road-racing-shoes-6Nc43S/FD8311-700",
+                  "imageUrl": "https://static.nike.com/a/images/t_default/7776f88c-1bf6-49ac-a53b-b532f4c51a87/alphafly-3-mens-road-racing-shoes-6Nc43S.png"
+                },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                {
+                    "company": "NIKE",
+                    "country": "USA",
+                    "id": 9,
+                    "productName": "Jordan Jumpman",
+                    "articleNo": "DC7485-349",
+                    "division": "Men",
+                    "category": "Clothing",
+                    "subCategory": "Lifestyle",
+                    "listPrice": 32,
+                    "salePrice": null,
+                    "currency": "USD",
+                    "description": "Rise and shine in this classic tee from Jordan Brand. Made from soft, comfortable cotton, it features a clean, classic Jumpman that's embroidered on the chest.",
+                    "url": "https://nike.com/us/t/jordan-jumpman-mens-short-sleeve-t-shirt-qwkX7c/DC7485-349",
+                    "imageUrl": "https://static.nike.com/a/images/t_default/u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/ae95a61a-7031-4ef2-abd5-f417ec997cf8/jordan-jumpman-mens-short-sleeve-t-shirt-qwkX7c.png"
+                  },
+                  {
+                    "company": "NIKE",
+                    "country": "USA",
+                    "productName": "Jordan Jumpman",
+                    "articleNo": "DC7485-410",
+                    "division": "Men",
+                    "category": "Clothing",
+                    "subCategory": "Lifestyle",
+                    "listPrice": 32.5,
+                    "salePrice": 19.97,
+                    "currency": "USD",
+                    "description": "Rise and shine in this classic tee from Jordan Brand. Made from soft, comfortable cotton, it features a clean, classic Jumpman that's embroidered on the chest.",
+                    "url": "https://nike.com/us/t/jordan-jumpman-mens-short-sleeve-t-shirt-qwkX7c/DC7485-410",
+                    "imageUrl": "https://static.nike.com/a/images/t_default/u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/429aaae4-7b7b-4691-86bc-4d7f01511701/jordan-jumpman-mens-short-sleeve-t-shirt-qwkX7c.png"
+                  },
+                  {
+                    "company": "NIKE",
+                    "country": "USA",
+                    "productName": "Jordan Jumpman",
+                    "articleNo": "DC7485-091",
+                    "division": "Men",
+                    "category": "Clothing",
+                    "subCategory": "Lifestyle",
+                    "listPrice": 32,
+                    "salePrice": null,
+                    "currency": "USD",
+                    "description": "Rise and shine in this classic tee from Jordan Brand. Made from soft, comfortable cotton, it features a clean, classic Jumpman that's embroidered on the chest.",
+                    "url": "https://nike.com/us/t/jordan-jumpman-mens-short-sleeve-t-shirt-qwkX7c/DC7485-091",
+                    "imageUrl": "https://static.nike.com/a/images/t_default/u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/2a80a079-0b24-4dfa-890b-c453e72f4528/jordan-jumpman-mens-short-sleeve-t-shirt-qwkX7c.png"
+                  },
+                  {
+                    "company": "NIKE",
+                    "country": "USA",
+                    "productName": "Jordan Jumpman",
+                    "articleNo": "DC7485-010",
+                    "division": "Men",
+                    "category": "Clothing",
+                    "subCategory": "Lifestyle",
+                    "listPrice": 32,
+                    "salePrice": null,
+                    "currency": "USD",
+                    "description": "Rise and shine in this classic tee from Jordan Brand. Made from soft, comfortable cotton, it features a clean, classic Jumpman that's embroidered on the chest.",
+                    "url": "https://nike.com/us/t/jordan-jumpman-mens-short-sleeve-t-shirt-qwkX7c/DC7485-010",
+                    "imageUrl": "https://static.nike.com/a/images/t_default/u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/f3be75d2-617d-4925-936e-c401674144f5/jordan-jumpman-mens-short-sleeve-t-shirt-qwkX7c.png"
+                  },
+                  {
+                    "company": "NIKE",
+                    "country": "USA",
+                    "productName": "Jordan Jumpman",
+                    "articleNo": "DC7485-100",
+                    "division": "Men",
+                    "category": "Clothing",
+                    "subCategory": "Lifestyle",
+                    "listPrice": 32,
+                    "salePrice": null,
+                    "currency": "USD",
+                    "description": "Rise and shine in this classic tee from Jordan Brand. Made from soft, comfortable cotton, it features a clean, classic Jumpman that's embroidered on the chest.",
+                    "url": "https://nike.com/us/t/jordan-jumpman-mens-short-sleeve-t-shirt-qwkX7c/DC7485-100",
+                    "imageUrl": "https://static.nike.com/a/images/t_default/u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/6f872eb7-5b29-489b-a88d-a197772ec263/jordan-jumpman-mens-short-sleeve-t-shirt-qwkX7c.png"
+                  },
+              
+                  {
+                    "company": "NIKE",
+                    "country": "USA",
+                    "productName": "Nike Sportswear",
+                    "articleNo": "FZ4720-060",
+                    "division": "Kids",
+                    "category": "Clothing",
+                    "subCategory": "Lifestyle",
+                    "listPrice": 50,
+                    "salePrice": 29.97,
+                    "currency": "USD",
+                    "description": "Varsity-inspired style meets modern comfort in these cozy joggers. Made with lightweight fleece, they're smooth on the outside and brushed soft on the inside for an easy layer for when you want extra warmth.",
+                    "url": "https://nike.com/us/t/sportswear-big-kids-girls-oversized-fleece-pants-HgLSHB/FZ4720-060",
+                    "imageUrl": "https://static.nike.com/a/images/t_default/3fb8651f-c65b-4ea4-8e59-6353f16e7d00/sportswear-big-kids-girls-oversized-fleece-pants-HgLSHB.png"
+                  },
+                  {
+                    "company": "NIKE",
+                    "country": "USA",
+                    "productName": "Nike",
+                    "articleNo": "5ND369-023",
+                    "division": "Kids",
+                    "category": "Clothing",
+                    "subCategory": "Lifestyle",
+                    "listPrice": 22,
+                    "salePrice": null,
+                    "currency": "USD",
+                    "description": "Dress the littlest athletes for the futura in this comfy all-in-1, made of soft cotton jersey knit fabric that feels gentle on baby's skin. This romper is roomy enough to layer over a sleeveless bodysuit for extra warmth and snappy tape closures at the shoulder and inseam make changing and dressing easy.",
+                    "url": "https://nike.com/us/t/baby-0-9m-futura-romper-d3RgKt/5ND369-023",
+                    "imageUrl": "https://static.nike.com/a/images/t_default/qfn0nso3rdrwq2ulb1m3/baby-0-9m-futura-romper-d3RgKt.png"
+                  },
+                  {
+                    "company": "NIKE",
+                    "country": "USA",
+                    "productName": "Nike",
+                    "articleNo": "N1009017-008",
+                    "division": "Unisex",
+                    "category": "Accessories",
+                    "subCategory": "Yoga",
+                    "listPrice": 24,
+                    "salePrice": null,
+                    "currency": "USD",
+                    "description": "Find a new level of flow. This lightweight EVA foam block helps extend your reach or add a touch of support where you feel you need it. Plus, its portability makes it ideal for travel or classes at your local studio.",
+                    "url": "https://nike.com/us/t/yoga-block-hWggCh/N1009017-008",
+                    "imageUrl": "https://static.nike.com/a/images/t_default/a299700f-d446-4b92-a56e-7bfecb468ba1/yoga-block-hWggCh.png"
+                  },
+                  {
+                    "company": "NIKE",
+                    "country": "USA",
+                    "productName": "Nike Sportswear",
+                    "articleNo": "FZ4720-227",
+                    "division": "Kids",
+                    "category": "Clothing",
+                    "subCategory": "Lifestyle",
+                    "listPrice": 50,
+                    "salePrice": 29.97,
+                    "currency": "USD",
+                    "description": "Varsity-inspired style meets modern comfort in these cozy joggers. Made with lightweight fleece, they're smooth on the outside and brushed soft on the inside for an easy layer for when you want extra warmth.",
+                    "url": "https://nike.com/us/t/sportswear-big-kids-girls-oversized-fleece-pants-HgLSHB/FZ4720-227",
+                    "imageUrl": "https://static.nike.com/a/images/t_default/7e1f74c5-b1e3-4e06-9297-092a5a26abc8/sportswear-big-kids-girls-oversized-fleece-pants-HgLSHB.png"
+                  },
+               
+                  {
+                    "company": "NIKE",
+                    "country": "USA",
+                    "productName": "Air Jordan",
+                    "articleNo": "NJ0313-001",
+                    "division": "Kids",
+                    "category": "Clothing",
+                    "subCategory": "Lifestyle",
+                    "listPrice": 50,
+                    "salePrice": 35.97,
+                    "currency": "USD",
+                    "description": "The Air Jordan Set includes a short-sleeve bodysuit, beanie, booties and a handy changing blanket featuring coordinated designs on soft knit fabric for all-day, cozy comfort.",
+                    "url": "https://nike.com/us/t/air-jordan-baby-bodysuit-beanie-booties-and-blanket-set-tD7fgS/NJ0313-001",
+                    "imageUrl": "https://static.nike.com/a/images/t_default/u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/a01d817e-45aa-40bf-9f1e-9c3756c0297d/air-jordan-baby-bodysuit-beanie-booties-and-blanket-set-tD7fgS.png"
+                  },
+                  {
+                    "company": "NIKE",
+                    "country": "USA",
+                    "productName": "Rafa",
+                    "articleNo": "FV8436-480",
+                    "division": "Men",
+                    "category": "Clothing",
+                    "subCategory": "Tennis",
+                    "listPrice": 40,
+                    "salePrice": null,
+                    "currency": "USD",
+                    "description": "He's the King of Clay, a multi-time champion and a tennis legend. Rep one of the best ever with this relaxed fit Rafa tee, designed with sweat-wicking fabric to help you stay dry on the court and beyond.",
+                    "url": "https://nike.com/us/t/rafa-mens-nikecourt-dri-fit-tennis-t-shirt-bbK1ld/FV8436-480",
+                    "imageUrl": "https://static.nike.com/a/images/t_default/52313585-0334-414e-8e6b-27302c8f64fd/rafa-mens-nikecourt-dri-fit-tennis-t-shirt-bbK1ld.png"
+                  },
+                  {
+                    "company": "NIKE",
+                    "country": "USA",
+                    "productName": "Rafa",
+                    "articleNo": "FV8436-010",
+                    "division": "Men",
+                    "category": "Clothing",
+                    "subCategory": "Tennis",
+                    "listPrice": 40,
+                    "salePrice": null,
+                    "currency": "USD",
+                    "description": "He's the King of Clay, a multi-time champion and a tennis legend. Rep one of the best ever with this relaxed fit Rafa tee, designed with sweat-wicking fabric to help you stay dry on the court and beyond.",
+                    "url": "https://nike.com/us/t/rafa-mens-nikecourt-dri-fit-tennis-t-shirt-bbK1ld/FV8436-010",
+                    "imageUrl": "https://static.nike.com/a/images/t_default/1b9a94f0-9b0b-4a98-be77-63934ce48ce0/rafa-mens-nikecourt-dri-fit-tennis-t-shirt-bbK1ld.png"
+                  },
+                  {
+                    "company": "NIKE",
+                    "country": "USA",
+                    "productName": "Rafa",
+                    "articleNo": "FV8436-100",
+                    "division": "Men",
+                    "category": "Clothing",
+                    "subCategory": "Tennis",
+                    "listPrice": 40,
+                    "salePrice": null,
+                    "currency": "USD",
+                    "description": "He's the King of Clay, a multi-time champion and a tennis legend. Rep one of the best ever with this relaxed fit Rafa tee, designed with sweat-wicking fabric to help you stay dry on the court and beyond.",
+                    "url": "https://nike.com/us/t/rafa-mens-nikecourt-dri-fit-tennis-t-shirt-bbK1ld/FV8436-100",
+                    "imageUrl": "https://static.nike.com/a/images/t_default/fe1a13ba-90a4-47dd-acd8-3f2f59c24e55/rafa-mens-nikecourt-dri-fit-tennis-t-shirt-bbK1ld.png"
+                  },
+                  {
+                    "company": "NIKE",
+                    "country": "USA",
+                    "productName": "Rafa",
+                    "articleNo": "FV8436-394",
+                    "division": "Men",
+                    "category": "Clothing",
+                    "subCategory": "Tennis",
+                    "listPrice": 40,
+                    "salePrice": null,
+                    "currency": "USD",
+                    "description": "He's the King of Clay, a multi-time champion and a tennis legend. Rep one of the best ever with this relaxed fit Rafa tee, designed with sweat-wicking fabric to help you stay dry on the court and beyond.",
+                    "url": "https://nike.com/us/t/rafa-mens-nikecourt-dri-fit-tennis-t-shirt-bbK1ld/FV8436-394",
+                    "imageUrl": "https://static.nike.com/a/images/t_default/cb264603-b19b-479d-879a-8b3cbe8fd9e7/rafa-mens-nikecourt-dri-fit-tennis-t-shirt-bbK1ld.png"
+                  },
+               
+                 
+                  {
+                    "company": "NIKE",
+                    "country": "USA",
+                    "productName": "Club América",
+                    "articleNo": "DV5184-409",
+                    "division": "Men",
+                    "category": "Clothing",
+                    "subCategory": "Soccer",
+                    "listPrice": 50,
+                    "salePrice": null,
+                    "currency": "USD",
+                    "description": "Your love for your team doesn't end when the weather changes. Smooth on the outside with unbrushed loops on the inside, our midweight French terry is breathable, making these roomy shorts comfy enough to wear all year long.",
+                    "url": "https://nike.com/us/t/club-am%C3%A9rica-mens-soccer-shorts-QDdZbX/DV5184-409",
+                    "imageUrl": "https://static.nike.com/a/images/t_default/9f8ad73a-dc82-4f77-bf3c-2a31ea171eba/club-am%C3%A9rica-mens-soccer-shorts-QDdZbX.png"
+                  },
+                  {
+                    "company": "NIKE",
+                    "country": "USA",
+                    "productName": "Nike",
+                    "articleNo": "26J613-G6U",
+                    "division": "Kids",
+                    "category": "Clothing",
+                    "subCategory": "Lifestyle",
+                    "listPrice": 44,
+                    "salePrice": 27.97,
+                    "currency": "USD",
+                    "description": "The Nike Cargo Pants are beyond comfy. And with multiple pockets to hold small items, they are super functional too!",
+                    "url": "https://nike.com/us/t/toddler-cargo-pants-mzrR8j/26J613-G6U",
+                    "imageUrl": "https://static.nike.com/a/images/t_default/28f1702b-aec6-4a7d-b667-9d99ab20bf60/toddler-cargo-pants-mzrR8j.png"
+                  },
+                  {
+                    "company": "NIKE",
+                    "country": "USA",
+                    "productName": "Nike",
+                    "articleNo": "36J613-023",
+                    "division": "Kids",
+                    "category": "Clothing",
+                    "subCategory": "Lifestyle",
+                    "listPrice": 44,
+                    "salePrice": 27.97,
+                    "currency": "USD",
+                    "description": "The Nike Cargo Pants are beyond comfy. And with multiple pockets to hold small items, they are super functional too!",
+                    "url": "https://nike.com/us/t/little-kids-woven-cargo-pants-mzrR8j/36J613-023",
+                    "imageUrl": "https://static.nike.com/a/images/t_default/3a2a6cb8-ce31-40a2-ab71-9bfe7c0e5f3d/little-kids-woven-cargo-pants-mzrR8j.png"
+                  },
+                  {
+                    "company": "NIKE",
+                    "country": "USA",
+                    "productName": "Nike",
+                    "articleNo": "36J613-G6U",
+                    "division": "Kids",
+                    "category": "Clothing",
+                    "subCategory": "Lifestyle",
+                    "listPrice": 44,
+                    "salePrice": 30.97,
+                    "currency": "USD",
+                    "description": "The Nike Cargo Pants are beyond comfy. And with multiple pockets to hold small items, they are super functional too!",
+                    "url": "https://nike.com/us/t/little-kids-woven-cargo-pants-mzrR8j/36J613-G6U",
+                    "imageUrl": "https://static.nike.com/a/images/t_default/702a371c-0e67-4baf-a3aa-30990eb9a0e7/little-kids-woven-cargo-pants-mzrR8j.png"
+                  },
+                  {
+                    "company": "NIKE",
+                    "country": "USA",
+                    "productName": "Nike",
+                    "articleNo": "26J613-023",
+                    "division": "Kids",
+                    "category": "Clothing",
+                    "subCategory": "Lifestyle",
+                    "listPrice": 44,
+                    "salePrice": 27.97,
+                    "currency": "USD",
+                    "description": "The Nike Cargo Pants are beyond comfy. And with multiple pockets to hold small items, they are super functional too!",
+                    "url": "https://nike.com/us/t/toddler-cargo-pants-mzrR8j/26J613-023",
+                    "imageUrl": "https://static.nike.com/a/images/t_default/d51b38eb-f89e-47d6-aade-722b5fac83e9/toddler-cargo-pants-mzrR8j.png"
+                  },
+                  {
+                    "company": "NIKE",
+                    "country": "USA",
+                    "productName": "Nike Apex",
+                    "articleNo": "FQ6846-010",
+                    "division": "Unisex",
+                    "category": "Clothing",
+                    "subCategory": "Golf",
+                    "listPrice": 35,
+                    "salePrice": null,
+                    "currency": "USD",
+                    "description": "This reversible Apex bucket hat lets you switch up your style anytime thanks to a solid color on one side and floral print graphics on the other. Lightweight and breathable, it offers 360-degree coverage to keep the sun from hitting your eyes when you're out and about.",
+                    "url": "https://nike.com/us/t/apex-reversible-bucket-hat-pRlgSB/FQ6846-010",
+                    "imageUrl": "https://static.nike.com/a/images/t_default/11cbd111-6efd-43ba-ab82-d4caaa6bf839/apex-reversible-bucket-hat-pRlgSB.png"
+                  },
+                  {
+                    "company": "NIKE",
+                    "country": "USA",
+                    "productName": "Nike Apex",
+                    "articleNo": "FQ6846-133",
+                    "division": "Unisex",
+                    "category": "Clothing",
+                    "subCategory": "Golf",
+                    "listPrice": 35,
+                    "salePrice": null,
+                    "currency": "USD",
+                    "description": "This reversible Apex bucket hat lets you switch up your style anytime thanks to a solid color on one side and floral print graphics on the other. Lightweight and breathable, it offers 360-degree coverage to keep the sun from hitting your eyes when you're out and about.",
+                    "url": "https://nike.com/us/t/apex-reversible-bucket-hat-pRlgSB/FQ6846-133",
+                    "imageUrl": "https://static.nike.com/a/images/t_default/6ed0c38a-3080-41b2-9627-92b4340df20a/apex-reversible-bucket-hat-pRlgSB.png"
+                  },
+                  {
+                    "company": "NIKE",
+                    "country": "USA",
+                    "productName": "Nike Swim",
+                    "articleNo": "NESSA703-090",
+                    "division": "Men",
+                    "category": "Clothing",
+                    "subCategory": "Workouts",
+                    "listPrice": 46,
+                    "salePrice": null,
+                    "currency": "USD",
+                    "description": "You deserve a worry-free day at the pool. Made with our sweat-wicking technology and added UV protection, this athletic-style top helps you stay dry, comfortable and shielded from the sun in areas covered by the garment.",
+                    "url": "https://nike.com/us/t/swim-mens-short-sleeve-hydroguard-extended-size-TxxQMV/NESSA703-090",
+                    "imageUrl": "https://static.nike.com/a/images/t_default/13bbad52-1e50-49fd-a3d7-7249272370f4/swim-mens-short-sleeve-hydroguard-extended-size-TxxQMV.png"
+                  },
+                  {
+                    "company": "NIKE",
+                    "country": "USA",
+                    "productName": "Nike Swim",
+                    "articleNo": "NESSA703-440",
+                    "division": "Men",
+                    "category": "Clothing",
+                    "subCategory": "Workouts",
+                    "listPrice": 46,
+                    "salePrice": null,
+                    "currency": "USD",
+                    "description": "You deserve a worry-free day at the pool. Made with our sweat-wicking technology and added UV protection, this athletic-style top helps you stay dry, comfortable and shielded from the sun in areas covered by the garment.",
+                    "url": "https://nike.com/us/t/swim-mens-short-sleeve-hydroguard-extended-size-TxxQMV/NESSA703-440",
+                    "imageUrl": "https://static.nike.com/a/images/t_default/a73504f8-f6a0-42e2-b69d-cc5c0c026a57/swim-mens-short-sleeve-hydroguard-extended-size-TxxQMV.png"
+                  },
+                  {
+                    "company": "NIKE",
+                    "country": "USA",
+                    "productName": "Nike Swim",
+                    "articleNo": "NESSA703-001",
+                    "division": "Men",
+                    "category": "Clothing",
+                    "subCategory": "Workouts",
+                    "listPrice": 46,
+                    "salePrice": null,
+                    "currency": "USD",
+                    "description": "You deserve a worry-free day at the pool. Made with our sweat-wicking technology and added UV protection, this athletic-style top helps you stay dry, comfortable and shielded from the sun in areas covered by the garment.",
+                    "url": "https://nike.com/us/t/swim-mens-short-sleeve-hydroguard-extended-size-TxxQMV/NESSA703-001",
+                    "imageUrl": "https://static.nike.com/a/images/t_default/fabb8727-1cee-4a86-8d29-c41cc7b65d84/swim-mens-short-sleeve-hydroguard-extended-size-TxxQMV.png"
+                  },
+                  {
+                    "company": "NIKE",
+                    "country": "USA",
+                    "productName": "Nike Dry",
+                    "articleNo": "CT2682-657",
+                    "division": "Kids",
+                    "category": "Clothing",
+                    "subCategory": "Baseball",
+                    "listPrice": 32,
+                    "salePrice": null,
+                    "currency": "USD",
+                    "description": "Perfect to wear on its own or as a layer, the Nike Pro Dri-FIT Top is made with stretchy fabric and sweat-wicking technology that helps keep you dry and comfortable during your workout.",
+                    "url": "https://nike.com/us/t/dry-big-kids-boys-3-4-sleeve-baseball-top-6b459S/CT2682-657",
+                    "imageUrl": "https://static.nike.com/a/images/t_default/43c2b2ea-a7d5-476d-961a-7c635d7ceb00/dry-big-kids-boys-3-4-sleeve-baseball-top-6b459S.png"
+                  },
+                  {
+                    "company": "NIKE",
+                    "country": "USA",
+                    "productName": "Nike Dry",
+                    "articleNo": "CT2682-065",
+                    "division": "Kids",
+                    "category": "Clothing",
+                    "subCategory": "Baseball",
+                    "listPrice": 32,
+                    "salePrice": null,
+                    "currency": "USD",
+                    "description": "Perfect to wear on its own or as a layer, the Nike Pro Dri-FIT Top is made with stretchy fabric and sweat-wicking technology that helps keep you dry and comfortable during your workout.",
+                    "url": "https://nike.com/us/t/dry-big-kids-boys-3-4-sleeve-baseball-top-6b459S/CT2682-065",
+                    "imageUrl": "https://static.nike.com/a/images/t_default/f63f8c29-ceff-4da3-896d-04a4928b4572/dry-big-kids-boys-3-4-sleeve-baseball-top-6b459S.png"
+                  },
+                  {
+                    "company": "NIKE",
+                    "country": "USA",
+                    "productName": "Nike Dry",
+                    "articleNo": "CT2682-066",
+                    "division": "Kids",
+                    "category": "Clothing",
+                    "subCategory": "Baseball",
+                    "listPrice": 32,
+                    "salePrice": null,
+                    "currency": "USD",
+                    "description": "Perfect to wear on its own or as a layer, the Nike Pro Dri-FIT Top is made with stretchy fabric and sweat-wicking technology that helps keep you dry and comfortable during your workout.",
+                    "url": "https://nike.com/us/t/dry-big-kids-boys-3-4-sleeve-baseball-top-6b459S/CT2682-066",
+                    "imageUrl": "https://static.nike.com/a/images/t_default/52005497-eeaf-4a9f-b881-0f77b5dd7c63/dry-big-kids-boys-3-4-sleeve-baseball-top-6b459S.png"
+                  },
+                  {
+                    "company": "NIKE",
+                    "country": "USA",
+                    "productName": "Nike Dry",
+                    "articleNo": "CT2682-063",
+                    "division": "Kids",
+                    "category": "Clothing",
+                    "subCategory": "Baseball",
+                    "listPrice": 32,
+                    "salePrice": null,
+                    "currency": "USD",
+                    "description": "Perfect to wear on its own or as a layer, the Nike Pro Dri-FIT Top is made with stretchy fabric and sweat-wicking technology that helps keep you dry and comfortable during your workout.",
+                    "url": "https://nike.com/us/t/dry-big-kids-boys-3-4-sleeve-baseball-top-6b459S/CT2682-063",
+                    "imageUrl": "https://static.nike.com/a/images/t_default/45aa1907-deb7-47a0-9ae0-c9b9ae69d39d/dry-big-kids-boys-3-4-sleeve-baseball-top-6b459S.png"
+                  },
+                  {
+                    "company": "NIKE",
+                    "country": "USA",
+                    "productName": "Javonte Williams Denver Broncos",
+                    "articleNo": "67NM0B8N8WF-HZ0",
+                    "division": "Men",
+                    "category": "Clothing",
+                    "subCategory": "Football",
+                    "listPrice": 130,
+                    "salePrice": null,
+                    "currency": "USD",
+                    "description": "Rep one of your team's top stars with this Denver Broncos Jersey. Proper ventilation and a loose fit help provide a dry, comfortable wear with the authentic look of the on-field uniform.",
+                    "url": "https://nike.com/us/t/javonte-williams-denver-broncos-mens-game-football-jersey-48dpK2/67NM0B8N8WF-HZ0",
+                    "imageUrl": "https://static.nike.com/a/images/t_default/00e31f3a-0e66-4658-a2f4-b3e346f9c3c5/javonte-williams-denver-broncos-mens-game-football-jersey-48dpK2.png"
+                  },
+      
+    ];
+
+    dispatch(setProducts(products));
+};
+
+export default productSlice.reducer;

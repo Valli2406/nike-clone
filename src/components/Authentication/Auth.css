@@ -1,0 +1,80 @@
+.box{
+    max-width: 500px;
+}
+
+.whole{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: sans-serif;
+}
+.logos{
+  font-size: 2.5rem;
+  padding: 6px;
+}
+.box h1{
+  font-weight: 400;
+  padding: 8px;
+}
+.input{
+  border: 1px black solid;
+  padding: 20px;
+  width: 390px;
+  font-size: 1rem;
+  margin-left: 15px;
+  margin-top: 30px;
+  border-radius: 10px;
+}
+.box p{
+  margin-left: 8px ;
+  margin-top: 30px;
+  color: grey;
+}
+.box a{
+  color: grey;
+}
+.box button{
+  padding: 10px 20px;
+  background-color: black;
+  border-radius: 40px;
+  color: white;
+  border: black 2px solid;
+  font-size: 1rem;
+  margin-left: 380px;
+  margin-top: 40px;
+}
+.box .tc{
+  width:350px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media (max-width: 600px) {
+    .box {
+      width: 80%;
+      max-width: 100%;
+    }
+}
+
+@media (max-width: 380px) {
+.box{
+  width: 90vw;
+}
+.input{
+  width:300px;
+  margin-left: 0;
+}
+.box button{
+  margin-left: 250px;
+}
+}
