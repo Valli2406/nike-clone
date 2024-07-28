@@ -5,15 +5,15 @@ import AnimatedBar from '../AnimatedBar/AnimatedBar';
 import Footer from '../Footer/Footer';
 
 
-function ProductPage({handleChange,result}) {
+function ProductPage({ handleChange, result }) {
     return (
         <>
             <div>
-           
+
                 <AnimatedBar />
-                <Sidebar handleChange ={handleChange}/>
-                <Products result={result}/>
-                <Footer/>
+                <Sidebar handleChange={handleChange} />
+                <Products result={result} />
+                <Footer />
             </div>
 
         </>

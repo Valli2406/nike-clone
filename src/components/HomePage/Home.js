@@ -1,8 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import './Home.css'
 import LocomotiveScroll from 'locomotive-scroll';
-import './LocomotiveScroll.css'
-import Griditem from './Griditem';
+import Griditem from '../HomePage/Griditem';
 import imagesLoaded from 'imagesloaded';
 import { useNavigate } from 'react-router-dom';
 const preloadImages = (selector) => {
@@ -116,9 +115,15 @@ function Home() {
       const distance = scroll.current.current - scroll.current.cache;
       scroll.current.cache = scroll.current.current;
 
-      leftColumnRef.current.style.transform = `skewY(${clamp(distance,-20,20)}deg)`;
-      middleColumnRef.current.style.transform = `skewY(${clamp(-distance,-20,20)}deg)`;
-      rightColumnRef.current.style.transform = `skewY(${clamp(distance,-20,20)}deg)`;
+      if (leftColumnRef.current) {
+        leftColumnRef.current.style.transform = `skewY(${clamp(distance, -20, 20)}deg)`;
+      }
+      if (middleColumnRef.current) {
+        middleColumnRef.current.style.transform = `skewY(${clamp(-distance, -20, 20)}deg)`;
+      }
+      if (rightColumnRef.current) {
+        rightColumnRef.current.style.transform = `skewY(${clamp(distance, -20, 20)}deg)`;
+      }
     })
     Promise.all(
       [preloadImages(".grid-item-media")]).then(() => {

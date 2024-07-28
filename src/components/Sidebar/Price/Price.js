@@ -10,17 +10,17 @@ function Price({ handleChange }) {
         <input
           type='radio'
           name=" test"
-          value="Male"
+          value="Men"
           onChange={handleChange} />
-        <span className='checkmark'></span> Male
+        <span className='checkmark'></span> Men
       </label>
       <label className='sidebar-label-container'>
         <input
           type='radio'
           name=" test" 
-          value="Female"
+          value="Women"
           onChange={handleChange}/>
-        <span className='checkmark'></span> Female
+        <span className='checkmark'></span> Women
       </label>
       <label className='sidebar-label-container'>
         <input

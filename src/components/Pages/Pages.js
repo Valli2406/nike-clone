@@ -9,7 +9,7 @@ import Favourite from '../Favourite/Favourite';
 import UpperBar from '../UpperBar/UpperBar';
 import Navigation from '../Navigation/nav';
 import Logout from '../Authentication/Logout';
-import Home from '../Home';
+import Home from '../HomePage/Home'
 import './Pages.css';
 
 function Pages({ handleChange, query, handleInputChange, result }) {
