@@ -39,28 +39,4 @@ A fully functional replica of the Nike online store, built using **React**, **Re
    ```bash
    git clone https://github.com/your-username/nike-clone.git
    cd nike-clone
-Install dependencies:
 
-bash
-Copy
-Edit
-npm install
-Firebase Setup:
-
-Create a Firebase project at Firebase Console.
-
-Enable Authentication (Google Sign-In).
-
-Set up Firestore Database.
-
-Create a .env file in the root and add your Firebase config:
-
-ini
-Copy
-Edit
-REACT_APP_FIREBASE_API_KEY=your_api_key
-REACT_APP_FIREBASE_AUTH_DOMAIN=your_auth_domain
-REACT_APP_FIREBASE_PROJECT_ID=your_project_id
-REACT_APP_FIREBASE_STORAGE_BUCKET=your_storage_bucket
-REACT_APP_FIREBASE_MESSAGING_SENDER_ID=your_sender_id
-REACT_APP_FIREBASE_APP_ID=your_app_id
